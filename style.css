@@ -1,0 +1,16 @@
+a{text-decoration: none;
+    color: inherit;}
+    a:hover{color:  #abb2b9 ;}
+        svg{
+            transition: .3s;
+        }
+        svg:hover{
+            fill: red;
+        }
+        .edit-icon:hover{
+            fill:limegreen;
+        }
+    .iconOrder:hover{
+        fill: #ffffff;
+    }
+    

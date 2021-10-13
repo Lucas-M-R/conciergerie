@@ -1,36 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <title>Conciergerie</title>
-</head>
-<style>
-a{text-decoration: none;
-color: inherit;}
-a:hover{color:  #abb2b9 ;}
-    svg{
-        transition: .3s;
-    }
-    svg:hover{
-        fill: red;
-    }
-    .edit-icon:hover{
-        fill:limegreen;
-    }
-
-
-</style>
+<?php include "header.php"; ?>
 <body>
-    <div class="container">
-        <div class="container">
-        <h4>Conciergerie</h4>
+    <div class="container  p-2"><h1 class="d-flex justify-content-center">Conciergerie</h1>
+        <div class="container d-flex justify-content-evenly p-2">
+        
         <form class="row g-3" action="./create.php" method="POST">
             <input type="date" class="form-control" name="dateIntervention" value="<?= date("Y-m-d") ?>" required id="dateIntervention">
             <select type="select" class="form-select form-select" name="typeIntervention" required id="typeIntervention">
@@ -51,12 +23,10 @@ a:hover{color:  #abb2b9 ;}
             </select>
             <button type="submit" class="btn btn-warning">Ajouter tâche</button>
         </form>
-        <a href="./conciergerie.php" class="btn btn-info">Mettre à jour la liste</a>
 
 </div>
         <?php
         include_once "connect.php";
-
 
         $basesql = "SELECT * FROM `intervention`";
 
@@ -77,31 +47,27 @@ a:hover{color:  #abb2b9 ;}
         }
         else if (isset($_GET['etagedesc'])){
             $basesql .="ORDER BY `etage_intervention` DESC";
-        }
-        
+        }        
         else {
             $basesql .="ORDER BY id_intervention DESC";
         }
-        
-        
-
-
+    
         $intervention = connect()->query($basesql);
         ?>
         <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
                     <th colspan="1" >Date
-                        <a href="./conciergerie.php?date=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></a>
-                        <a href="./conciergerie.php?datedesc=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></a>
+                        <a href="./conciergerie.php?date=1"><svg class="iconOrder" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="24px" fill="#abb2b9 "><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></a>
+                        <a href="./conciergerie.php?datedesc=1"><svg class="iconOrder" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="24px" fill="#abb2b9 "><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></a>
                     </th>
                     <th colspan="1">Interventions
-                        <a href="./conciergerie.php?inter=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></a>
-                        <a href="./conciergerie.php?interdesc=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></a>
+                        <a href="./conciergerie.php?inter=1"><svg class="iconOrder" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="24px" fill="#abb2b9 "><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></a>
+                        <a href="./conciergerie.php?interdesc=1"><svg class="iconOrder" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="24px" fill="#abb2b9 "><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></a>
                     </th>
                     <th colspan="1">Etages
-                        <a href="./conciergerie.php?etage=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></a>
-                        <a href="./conciergerie.php?etagedesc=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></a>
+                        <a href="./conciergerie.php?etage=1"><svg class="iconOrder" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="24px" fill="#abb2b9 "><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></a>
+                        <a href="./conciergerie.php?etagedesc=1"><svg class="iconOrder" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="24px" fill="#abb2b9 "><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></a>
                     </th>
                     <th colspan="2"></th>
                 </tr>
@@ -115,20 +81,21 @@ a:hover{color:  #abb2b9 ;}
                         <td><?= $tableau->date_intervention; ?></td>
                         <td><?= $tableau->type_intervention; ?></td>
                         <td><?= $tableau->etage_intervention; ?></td>
-                        <td><a href="./edit.php?id=<?= $idinterv ?>"><svg class="edit-icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M3,21l3.75,0L17.81,9.94l-3.75-3.75L3,17.25L3,21z M5,18.08l9.06-9.06l0.92,0.92L5.92,19L5,19L5,18.08z"/></g><g><path d="M18.37,3.29c-0.39-0.39-1.02-0.39-1.41,0l-1.83,1.83l3.75,3.75l1.83-1.83c0.39-0.39,0.39-1.02,0-1.41L18.37,3.29z"/></g></g></g></svg></a></td>
-                        <td><a href="./delete.php?id=<?= $idinterv ?>" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#00c657"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-</a></td>
+                        <!-- <td><a href="./edit.php?id=<?= $idinterv ?>"><svg class="edit-icon" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M3,21l3.75,0L17.81,9.94l-3.75-3.75L3,17.25L3,21z M5,18.08l9.06-9.06l0.92,0.92L5.92,19L5,19L5,18.08z"/></g><g><path d="M18.37,3.29c-0.39-0.39-1.02-0.39-1.41,0l-1.83,1.83l3.75,3.75l1.83-1.83c0.39-0.39,0.39-1.02,0-1.41L18.37,3.29z"/></g></g></g></svg></a></td> -->
+                        <td><a href="./delete.php?id=<?= $idinterv ?>" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#00c657"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></a></td>
                     </tr>
                 <?php
                 }                
                 ?>
             </tbody>
         </table>
+        <a href="./conciergerie.php" class="btn btn-info">Mettre à jour la liste</a>
+
         <?php
 
         if (!empty($_POST['dateIntervention']) && !empty($_POST['typeIntervention']) && !empty($_POST['etageIntervention'])) {
             $sth = connect()->prepare('INSERT INTO intervention(date_intervention,type_intervention,etage_intervention)
-VALUES (:date_intervention,:type_intervention,:etage_intervention)');
+        VALUES (:date_intervention,:type_intervention,:etage_intervention)');
             $sth->execute(array(
                 ':date_intervention' => $_POST['dateIntervention'],
                 ':type_intervention' => $_POST['typeIntervention'],
@@ -140,9 +107,9 @@ VALUES (:date_intervention,:type_intervention,:etage_intervention)');
    
 
 
-
+<div class="container d-flex justify-content-evenly p-2">
     <form action="./search.php" method="GET">
-            <input type="date" class="form-select form-select" name="dateIntervention"  id="dateIntervention">
+            <input type="date" class="form-select form-select" name="dateIntervention" value="<?= date("Y-m-d") ?>" id="dateIntervention">
             <button type="submit" class="btn btn-success">Rechercher la date</button>
         </form>
         <form action="./search.php"  method="GET">
@@ -156,6 +123,7 @@ VALUES (:date_intervention,:type_intervention,:etage_intervention)');
             </select>
             <button type="submit" class="btn btn-success">Rechercher le type d'intervention</button>
         </form>
+
         <form action="./search.php" method="GET">
             <select type="select" class="form-select form-select" name="etageIntervention" id="etageIntervention">
                 <option value="1">RDC</option>
@@ -167,8 +135,8 @@ VALUES (:date_intervention,:type_intervention,:etage_intervention)');
             </select>
             <button type="submit" class="btn btn-success">Rechercher l'étage</button>
         </form>
-         
-        <?php include "search.php" ?>
+         </div>
+       
 
  </div>
 </body>
