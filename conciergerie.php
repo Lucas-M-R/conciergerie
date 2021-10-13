@@ -24,6 +24,8 @@ a:hover{color:  #abb2b9 ;}
     .edit-icon:hover{
         fill:limegreen;
     }
+
+
 </style>
 <body>
     <div class="container">
@@ -67,6 +69,15 @@ a:hover{color:  #abb2b9 ;}
         else if (isset($_GET['etage'])){
             $basesql .="ORDER BY `etage_intervention` ASC";
         }
+        else if (isset($_GET['datedesc'])){
+            $basesql .="ORDER BY `date_intervention` DESC";
+        }
+        else if (isset($_GET['interdesc'])){
+            $basesql .="ORDER BY `type_intervention` DESC";
+        }
+        else if (isset($_GET['etagedesc'])){
+            $basesql .="ORDER BY `etage_intervention` DESC";
+        }
         
         else {
             $basesql .="ORDER BY id_intervention DESC";
@@ -80,9 +91,18 @@ a:hover{color:  #abb2b9 ;}
         <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
-                    <th colspan="1"><a href="./conciergerie.php?date=1">Date</a></th>
-                    <th colspan="1"><a href="./conciergerie.php?inter=1">Interventions</a></th>
-                    <th colspan="1"><a href="./conciergerie.php?etage=1">Etages</a></th>
+                    <th colspan="1" >Date
+                        <a href="./conciergerie.php?date=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></a>
+                        <a href="./conciergerie.php?datedesc=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></a>
+                    </th>
+                    <th colspan="1">Interventions
+                        <a href="./conciergerie.php?inter=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></a>
+                        <a href="./conciergerie.php?interdesc=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></a>
+                    </th>
+                    <th colspan="1">Etages
+                        <a href="./conciergerie.php?etage=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></a>
+                        <a href="./conciergerie.php?etagedesc=1"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></a>
+                    </th>
                     <th colspan="2"></th>
                 </tr>
             </thead>
